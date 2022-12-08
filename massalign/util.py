@@ -1,5 +1,4 @@
 import codecs
-from urllib2 import urlopen
 
 class FileReader:
 	"""
@@ -22,12 +21,10 @@ class FileReader:
 			* **text**: Raw text within the file.
 		"""
 		text = ''
-		if self.path.startswith('http'):
-			text = urlopen(self.path).read().decode('utf8').strip()
-		else:
-			f = codecs.open(self.path, encoding='utf8')
-			text = f.read().strip()
-			f.close()
+
+		f = codecs.open(self.path, encoding='utf8')
+		text = f.read().strip()
+		f.close()
 		return text
 	
 	def getSplitSentences(self):

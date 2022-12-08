@@ -3,7 +3,6 @@ import numpy as np
 from annotators import *
 from aligners import *
 from models import *
-from gui import *
 
 class MASSAligner:
 	"""
@@ -109,75 +108,3 @@ class MASSAligner:
 		else:
 			return {}
 			
-	def visualizeParagraphAlignments(self, paragraphs1=[], paragraphs2=[], alignments=[]):
-		"""
-		Displays alignments between lists of paragraphs.
-		
-		* *Parameters*:
-			* **paragraphs1**: A list of source paragraphs. A paragraph is a list of sentences.
-			* **paragraphs2**: A list of target paragraphs. A paragraph is a list of sentences.
-			* **alignments**: An alignment path between the input paragraph lists.
-		* *Output*:
-			* Opens an interface showcasing aligned paragraphs.
-		"""
-		gui = BasicGUI()
-		gui.displayParagraphAlignments(paragraphs1, paragraphs2, alignments)
-		
-	def visualizeListOfParagraphAlignments(self, list_of_paragraph_sets1=[], list_of_paragraph_sets2=[], list_of_alignment_paths=[], **kwargs):
-		"""
-		Displays alignments between lists of lists of paragraphs.
-		Each list of paragraphs can represent a document, so this function allows you to see the paragraph alignments of an entire collection of documents through a single interface.
-		
-		* *Parameters*:
-			* **list_of_paragraph_sets1**: A source list of paragraph lists. A paragraph is a list of sentences.
-			* **list_of_paragraph_sets2**: A source list of paragraph lists. A paragraph is a list of sentences.
-			* **list_of_alignment_paths**: List of alignment paths between each pair of paragraph lists.
-		* *Output*:
-			* Opens an interface showcasing the aligned paragraphs for each pair of paragraph lists.
-		"""
-		gui = BasicGUI(**kwargs)
-		gui.displayListOfParagraphAlignments(list_of_paragraph_sets1, list_of_paragraph_sets2, list_of_alignment_paths, **kwargs)
-			
-	def visualizeSentenceAlignments(self, paragraph1=[], paragraph2=[], alignments=[], **kwargs):
-		"""
-		Displays sentence alignments between two paragraphs.
-		
-		* *Parameters*:
-			* **paragraph1**: A source paragraph. A paragraph is a list of sentences.
-			* **paragraph2**: A target paragraph. A paragraph is a list of sentences.
-			* **alignments**: An alignment path between the input paragraphs.
-		* *Output*:
-			* Opens an interface showcasing sentence alignments for a paragraph pair.
-		"""
-		gui = BasicGUI(**kwargs)
-		gui.displaySentenceAlignments(paragraph1, paragraph2, alignments, **kwargs)
-			
-	def visualizeListOfSentenceAlignments(self, list_of_paragraphs1=[], list_of_paragraphs2=[], list_of_alignment_paths=[], **kwargs):
-		"""
-		Displays alignments between the sentences of each pair of paragraphs in a pair of paragraph lists.
-		The interface will showcase the sentence-level alignments between each paragraph pair through a single interface.
-		
-		* *Parameters*:
-			* **list_of_paragraphs1**: A source list of paragraphs. A paragraph is a list of sentences.
-			* **list_of_paragraphs2**: A source list of paragraphs. A paragraph is a list of sentences.
-			* **list_of_alignment_paths**: List of alignment paths between each pair of paragraphs.
-		* *Output*:
-			* Opens an interface showcasing the aligned sentences for each pair of paragraphs.
-		"""
-		gui = BasicGUI(**kwargs)
-		gui.displayListOfSentenceAlignments(list_of_paragraphs1, list_of_paragraphs2, list_of_alignment_paths, **kwargs)
-		
-	def visualizeSentenceAnnotations(self, sentence1='', sentence2='', word_alignments='', annotations=[], **kwargs):
-		"""
-		Displays word-level annotations for a pair of aligned sentences.
-		
-		* *Parameters*:
-			* **sentence1**: A source sentence.
-			* **sentence2**: A target sentence.
-			* **word_alignments**: Word alignments in Pharaoh format.
-			* **annotations**: Word-level annotations produced for the sentence pair.
-		* *Output*:
-			* Opens an interface showcasing the word-level annotations for the aligned sentences.
-		"""
-		gui = BasicGUI(**kwargs)
-		gui.displaySentenceAnnotations(sentence1, sentence2, word_alignments, annotations, **kwargs)
